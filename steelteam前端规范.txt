@@ -1,12 +1,12 @@
-/*
+/***********************************************\
 	stellteam团队前端规范
 
-	@author:	杨亚洲
-	@version：	v1.2
-	@date：		2016-3-13
-	@email：	allenyang1995@outlook.com
+	@author:	杨亚洲;
+	@github:	github.com/allenyangfly;
+	@mail：		allenyang1995@outlook.com;
+	@qq:  		827883530;
 
-*/
+\************************************************/
 
 1.项目结构标准
 
