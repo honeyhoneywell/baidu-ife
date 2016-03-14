@@ -27,7 +27,7 @@
 一.项目结构
 
 		task1						-->第一阶段
-			--demo1					-->第一个任务
+			--demo1					-->第一个demo
 				html                -->具体的html文件
 				--css   			-->css文件夹
 				--images            -->图片文件夹
