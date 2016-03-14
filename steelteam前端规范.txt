@@ -10,6 +10,10 @@
 
 1.项目结构标准
 
+
+		
+
+
 2.文件命名标准
 
 3.html标准
@@ -22,20 +26,29 @@
 
 一.项目结构
 
-	css                             -->css文件夹
-		--reset.css            		-->重置样式
-  	 	--style.css             	-->业务逻辑css
-	Images                          -->图片文件夹(按照页面分类)
-		--public					-->公共图片文件夹
-		--index        				-->私有图片文件夹
-	font                            -->字体文件文件夹
+		task1						-->第一阶段
+			--demo1					-->第一个任务
+				html                -->具体的html文件
+				--css   			-->css文件夹
+				--images            -->图片文件夹
+				--font				-->字体文件文件夹
+				--js     			-->js文件夹
+			--demo2
+				html
+				--css
+				--images	
+				--font
+				--js
+			
+			....
 
-	js                              -->js文件夹
-		--jquery	             	-->jquery以及jquery系列库
-		--html5		              	-->其余的模块 如html5兼容模块 图片自适应模块 等
-   		--public	             	-->公共js文件(存放每个html页面都需要用到的一些代码)
-
-	html                            -->具体的html文件
+		task2
+			--demo1
+				html
+				--css
+				--images
+				--font	
+				--js
 
 
 二.文件命名标准
