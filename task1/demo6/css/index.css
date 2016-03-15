@@ -238,6 +238,7 @@ body{
 /*content*/
 #content{
 	margin-top: 75px;
+	padding-bottom: 38px;
 }
 
 #content .section{
