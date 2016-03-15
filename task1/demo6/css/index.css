@@ -444,6 +444,9 @@ body{
 /*
 	footer
 */
+#footer{
+	height: 100px;
+}
 #footer .linear{
 	height:1px;
 } 
