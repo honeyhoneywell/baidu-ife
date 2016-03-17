@@ -69,7 +69,9 @@ li{
     box-shadow: 0px 0px 10px #000;
 }
 
-
+.show{
+    z-index:2;
+}
 #banner{
     position: relative;
     width:400px;
