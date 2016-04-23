@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ife--问卷调查管理系统</title>
+    <link rel="stylesheet" href="./css/calendar.css" type="text/css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+</head>
+<body>
+    <nav class="nav-wrap">
+        <div class="logo">
+            <img src="./img/q.png" alt="1">
+            <span class="logo-title">问卷管理</span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="#">我的问卷</a></li>
+        </ul>
+    </nav>
+    <article class="container clearfix">
+        <section class="build-new none">
+            <button class="c-s">
+                <a href="#">
+                    <img src="./img/add.png" alt="2">
+                    <span>新建问卷</span>    
+                </a>
+            </button>
+        </section>
+        
+        <div class="calendar-wrap">
+            <span>选择截至日期：</span>
+            <input type="text" class="calendar-input" data-calendar   readonly="readonly">
+        </div>   
+
+    </article>
+    <script data-main="js/javascript" src="./js/require.js"></script>
+</body>
+</html>

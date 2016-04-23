@@ -1,0 +1,141 @@
+@charset "UTF-8";
+/* reset */
+@font-face {
+  font-family: "Consolas";
+  src: url("../font/Consolas.eot"), url("../font/Consolas.woff") format("woff"), url("../font/Consolas.ttf") format("truetype"), url("../font/Consolas.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+* {
+  box-sizing: border-box;
+  outline: none; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #EFEFEF;
+  font-family: "Consolas","微软雅黑"; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+p {
+  margin: 0; }
+
+/* mixin */
+.w, .build-new button a {
+  width: 100%; }
+
+.h, nav .logo, .nav-list, .nav-list li, .build-new button a {
+  height: 100%; }
+
+.f-l, .nav-list {
+  float: left; }
+
+.f-r {
+  float: right; }
+
+.bold {
+  font-weight: bold; }
+
+.stitle {
+  font: 400 14px/14px "Consolas","微软雅黑"; }
+
+.mtitle, .build-new button a span {
+  font: 200 18px/18px "Consolas","微软雅黑"; }
+
+.ltitle, nav .logo .logo-title {
+  font: 200 25px/25px "Consolas","微软雅黑"; }
+
+.c-s, nav .logo {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease; }
+
+.none {
+  display: none !important; }
+
+.clearfix {
+  zoom: 1; }
+
+.clearfix::after {
+  content: ".";
+  height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both; }
+
+nav {
+  background: #EE7419;
+  height: 47px; }
+  nav .logo {
+    float: left;
+    width: 200px;
+    margin: 0 0 0 80px;
+    font-size: 0; }
+    nav .logo img {
+      margin: 0 5px 0 4px;
+      vertical-align: middle; }
+    nav .logo .logo-title {
+      color: #fff;
+      vertical-align: middle;
+      text-align: center;
+      line-height: 47px; }
+
+.nav-list {
+  float: left;
+  width: auto; }
+  .nav-list li {
+    display: inline-block;
+    text-align: center;
+    line-height: 37px;
+    padding: 5px; }
+    .nav-list li a {
+      display: inline-block;
+      height: 100%;
+      color: #fff; }
+    .nav-list li:hover a {
+      color: #EE7419; }
+    .nav-list li:hover {
+      background: #fff; }
+
+.build-new {
+  width: 1050px;
+  height: 325px;
+  margin: 70px auto 0;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 1px 0px #000;
+  text-align: center;
+  line-height: 325px; }
+  .build-new button {
+    padding: 0;
+    border-radius: 3px;
+    background: #EE7419;
+    width: 190px;
+    height: 50px;
+    border: none; }
+    .build-new button a {
+      display: block;
+      text-align: center; }
+      .build-new button a img {
+        vertical-align: middle;
+        margin: 0 5px 0 0; }
+      .build-new button a span {
+        color: #fff;
+        vertical-align: middle;
+        line-height: 50px; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,199 @@
+// color
+// sass --watch style.scss:style.css --style expanded --sourcemap
+$m : #EE7419;
+$bodyC : #EFEFEF;
+$f : #fff;
+$b : #000;
+
+/* reset */
+@font-face {
+  font-family: "Consolas";
+  src: url("../font/Consolas.eot"),
+  url("../font/Consolas.woff") format("woff"), 
+  url("../font/Consolas.ttf") format("truetype"), 
+  url("../font/Consolas.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; 
+}
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: $b;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: $bodyC;
+    font-family: "Consolas","微软雅黑";
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+/* mixin */
+
+.w {
+    width: 100%;
+}
+
+.h {
+    height: 100%;
+}
+
+.f-l {
+    float: left;
+}
+
+.f-r {
+    float: right;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.stitle {
+    font: 400 14px/14px "Consolas","微软雅黑";
+}
+
+.mtitle {
+    font: 200 18px/18px "Consolas","微软雅黑";
+}
+
+.ltitle {
+    font: 200 25px/25px "Consolas","微软雅黑";
+}
+
+.c-s {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.none {
+    display: none !important;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix::after {
+    content: ".";
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+nav {
+    background: $m;
+    height: 47px;
+    .logo {
+        float:left;
+        @extend .h,.c-s;
+        width: 200px;
+        margin: 0 0 0 80px;
+
+        font-size: 0; // 父级设置了0 inline-block 的间隙取消 间隙的产生是因为空格
+        img {
+            margin: 0 5px 0 4px;
+            vertical-align: middle;  // 设置图片以行内的最高的行高元素的中线居中
+        }
+        .logo-title {
+            @extend .ltitle;
+            color: $f;
+            vertical-align: middle; // 文字居中
+            text-align: center; 
+            line-height: 47px;      // 文字设置行高为height
+        }
+    }
+}
+
+.nav-list {
+    @extend .f-l,.h;
+    float: left;
+    width: auto;
+
+    li {
+        @extend .h;
+        display: inline-block;
+        text-align: center;
+        line-height: 37px;
+        padding: 5px;
+        a {
+            display: inline-block;
+            height: 100%;
+            color: $f;
+        }
+        &:hover a{
+            color: $m;
+        }
+
+        &:hover {
+            background: $f;
+        }
+    }
+}
+
+.container {
+    
+}
+
+.build-new {
+    width: 1050px;
+    height: 325px;
+    margin: 70px auto 0;
+    background: $f;
+    border-radius: 3px;
+    box-shadow: 0 0 1px 0px $b;
+    text-align: center;
+    line-height: 325px;
+
+    button {        
+        padding: 0;
+        border-radius: 3px;
+        a {
+           @extend .w , .h;
+           display: block;
+            text-align: center;
+           img {
+                vertical-align: middle;
+                margin: 0 5px 0 0;
+           }
+
+           span {
+                @extend .mtitle;
+                color: $f;
+                vertical-align: middle;
+                line-height: 50px;
+
+           } 
+        }
+        background: $m;
+        width: 190px;
+        height: 50px;
+        border: none;
+    }
+}
