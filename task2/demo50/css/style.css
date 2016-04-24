@@ -4,138 +4,292 @@
   font-family: "Consolas";
   src: url("../font/Consolas.eot"), url("../font/Consolas.woff") format("woff"), url("../font/Consolas.ttf") format("truetype"), url("../font/Consolas.svg") format("svg");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
 * {
   box-sizing: border-box;
-  outline: none; }
+  outline: none;
+}
+*::selection {
+  background: transparent;
+  color: #1C86D1;
+}
 
 a {
   text-decoration: none;
-  color: #000; }
+  color: #000;
+}
 
 body {
   margin: 0;
   padding: 0;
   background: #EFEFEF;
-  font-family: "Consolas","微软雅黑"; }
+  font-family: "Consolas","微软雅黑";
+}
 
 ul {
   list-style: none;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
+
+button {
+  padding: 0;
+}
 
 p {
-  margin: 0; }
+  margin: 0;
+}
 
 /* mixin */
-.w, .build-new button a {
-  width: 100%; }
+.w, .build-new button a, .edit-choose .add-question-type a {
+  width: 100%;
+}
 
-.h, nav .logo, .nav-list, .nav-list li, .build-new button a {
-  height: 100%; }
+.h, nav .logo, .nav-list, .nav-list li, .build-new button a, .edit-choose .add-question-type a {
+  height: 100%;
+}
 
 .f-l, .nav-list {
-  float: left; }
+  float: left;
+}
 
 .f-r {
-  float: right; }
+  float: right;
+}
 
 .bold {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .stitle {
-  font: 400 14px/14px "Consolas","微软雅黑"; }
+  font: 400 14px/14px "Consolas","微软雅黑";
+}
 
 .mtitle, .build-new button a span {
-  font: 200 18px/18px "Consolas","微软雅黑"; }
+  font: 200 18px/18px "Consolas","微软雅黑";
+}
 
 .ltitle, nav .logo .logo-title {
-  font: 200 25px/25px "Consolas","微软雅黑"; }
+  font: 200 25px/25px "Consolas","微软雅黑";
+}
 
 .c-s, nav .logo {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
-  user-select: none; }
+  user-select: none;
+}
 
 .hidden {
   visibility: hidden;
   opacity: 0;
-  transition: 0.3s ease; }
+  transition: 0.3s ease;
+}
 
 .none {
-  display: none !important; }
+  display: none !important;
+}
 
 .clearfix {
-  zoom: 1; }
+  zoom: 1;
+}
 
 .clearfix::after {
   content: ".";
   height: 0;
   display: block;
   visibility: hidden;
-  clear: both; }
+  clear: both;
+}
 
 nav {
   background: #EE7419;
-  height: 47px; }
-  nav .logo {
-    float: left;
-    width: 200px;
-    margin: 0 0 0 80px;
-    font-size: 0; }
-    nav .logo img {
-      margin: 0 5px 0 4px;
-      vertical-align: middle; }
-    nav .logo .logo-title {
-      color: #fff;
-      vertical-align: middle;
-      text-align: center;
-      line-height: 47px; }
+  height: 47px;
+}
+nav .logo {
+  float: left;
+  width: 200px;
+  margin: 0 0 0 80px;
+  font-size: 0;
+}
+nav .logo img {
+  margin: 0 5px 0 4px;
+  vertical-align: middle;
+}
+nav .logo .logo-title {
+  color: #fff;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 47px;
+}
 
 .nav-list {
   float: left;
-  width: auto; }
-  .nav-list li {
-    display: inline-block;
-    text-align: center;
-    line-height: 37px;
-    padding: 5px; }
-    .nav-list li a {
-      display: inline-block;
-      height: 100%;
-      color: #fff; }
-    .nav-list li:hover a {
-      color: #EE7419; }
-    .nav-list li:hover {
-      background: #fff; }
+  width: auto;
+}
+.nav-list li {
+  display: inline-block;
+  text-align: center;
+  line-height: 37px;
+  padding: 5px;
+}
+.nav-list li a {
+  display: inline-block;
+  height: 100%;
+  color: #fff;
+}
+.nav-list li:hover a {
+  color: #EE7419;
+}
+.nav-list li:hover {
+  background: #fff;
+}
 
-.build-new {
+.container {
   width: 1050px;
-  height: 325px;
   margin: 70px auto 0;
   background: #fff;
   border-radius: 3px;
   box-shadow: 0 0 1px 0px #000;
   text-align: center;
-  line-height: 325px; }
-  .build-new button {
-    padding: 0;
-    border-radius: 3px;
-    background: #EE7419;
-    width: 190px;
-    height: 50px;
-    border: none; }
-    .build-new button a {
-      display: block;
-      text-align: center; }
-      .build-new button a img {
-        vertical-align: middle;
-        margin: 0 5px 0 0; }
-      .build-new button a span {
-        color: #fff;
-        vertical-align: middle;
-        line-height: 50px; }
+  padding: 0 20px;
+}
+
+.build-new {
+  height: 325px;
+  padding: 112px 0 0 0;
+}
+.build-new button {
+  border-radius: 3px;
+  background: #EE7419;
+  width: 190px;
+  height: 50px;
+  border: none;
+}
+.build-new button a {
+  display: block;
+  text-align: center;
+}
+.build-new button a img {
+  vertical-align: middle;
+  margin: 0 5px 0 0;
+}
+.build-new button a span {
+  color: #fff;
+  vertical-align: middle;
+  line-height: 50px;
+}
+
+.build-page {
+  height: auto;
+}
+
+.edit-title {
+  height: 100px;
+  padding: 10px;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+}
+.edit-title p {
+  line-height: 80px;
+  font-weight: bold;
+}
+.edit-title p:hover {
+  background: #fef1e8;
+}
+
+.edit-choose {
+  padding: 20px;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+}
+.edit-choose .add-question {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  height: 150px;
+}
+.edit-choose .add-question-type {
+  height: 70px;
+  font-size: 0;
+  padding: 20px;
+}
+.edit-choose .add-question-type button {
+  width: 100px;
+  height: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: #eee;
+  cursor: pointer;
+  margin-right: 8px;
+}
+.edit-choose .add-question-type button:hover span {
+  color: #EE7419;
+}
+.edit-choose .add-question-type button:hover {
+  border: 1px solid #EE7419;
+}
+.edit-choose .add-question-type a {
+  display: block;
+}
+.edit-choose .add-question-type img {
+  vertical-align: middle;
+  margin: -2px 5px 0 0;
+}
+.edit-choose .add-question-type span {
+  vertical-align: middle;
+  line-height: 35px;
+  color: #8b8b8b;
+  font-family: "Consolas","微软雅黑";
+}
+.edit-choose .add-pic {
+  height: 78px;
+  background: #eee;
+  font-size: 20px;
+  cursor: pointer;
+}
+.edit-choose .add-pic:hover span {
+  color: #EE7419;
+}
+.edit-choose .add-pic:hover .add-pic-btn {
+  background: url(../img/add-q-hover.png) no-repeat;
+}
+.edit-choose .add-pic .add-pic-btn {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(../img/add-q.png) no-repeat;
+  vertical-align: middle;
+}
+.edit-choose .add-pic span {
+  vertical-align: middle;
+  line-height: 78px;
+}
+
+.other-set {
+  width: 970px;
+  height: 110px;
+  margin: auto;
+}
+.other-set .calendar-box {
+  float: left;
+  margin: 30px 0 0 70px;
+}
+.other-set .build-submit {
+  float: right;
+  margin: 30px 70px 0 0;
+}
+.other-set .build-submit button {
+  width: 100px;
+  height: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: #eee;
+  cursor: pointer;
+  font-family: "Consolas","微软雅黑";
+  font-size: 16px;
+}
+.other-set .build-submit button:hover span {
+  color: #EE7419;
+}
+.other-set .build-submit button:hover {
+  border: 1px solid #EE7419;
+}
 
 /*# sourceMappingURL=style.css.map */

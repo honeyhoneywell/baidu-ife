@@ -1,9 +1,10 @@
 define(["util"] , function ($) {
     $ = new u();
 
-    function calendar ( Parent , target) {
+    function calendar ( Parent , target , callback ) {
         this.Parent = Parent;
         this.oT = target;
+        this.callback = callback;
         this.init();
     }
 
@@ -254,6 +255,7 @@ define(["util"] , function ($) {
             $.delegateEvent(os , "td.use" , "click" , function (ev , target) {
                 $self.oT.value = oYYYY.dataset.year+'-'+oMM.dataset.month+'-'+target.innerHTML;
                 $.addClass(os , "none");
+                $self.callback && $self.callback();
             });
 
         },
@@ -404,19 +406,17 @@ define(["util"] , function ($) {
     }
 
 
-    return function ( eWrap , ele , callback ) {
+    return function ( eWrap , ele , callback) {
         var type = $.ObjectTest(ele);
 
         if (type === "Array" || type === "NodeList" || type === "HTMLCollection") {
             ele = Array.from(ele);
 
             ele.forEach(function ( value , idx ,array ) {
-                new calendar( eWrap , value);
+                new calendar( eWrap , value , callback);
             }); 
         } else if ( /^HTML\S+Element$/.test(type) ) { // 如果是单个页面元素
-            new calendar( eWrap , ele );
+            new calendar( eWrap , ele , callback);
         }   
-
-        callback && callback();
     }
 });

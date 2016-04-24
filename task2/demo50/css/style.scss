@@ -5,6 +5,7 @@ $bodyC : #EFEFEF;
 $f : #fff;
 $b : #000;
 
+
 /* reset */
 @font-face {
   font-family: "Consolas";
@@ -19,11 +20,19 @@ $b : #000;
 * {
     box-sizing: border-box;
     outline: none;
+    &::selection {
+        background: transparent;
+        color: #1C86D1;
+    }
 }
 
 a {
     text-decoration: none;
     color: $b;
+}
+
+@mixin defalutfont() {
+    font-family: "Consolas","微软雅黑";
 }
 
 body {
@@ -37,6 +46,10 @@ ul {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+button {
+    padding: 0;
 }
 
 p {
@@ -158,21 +171,20 @@ nav {
 }
 
 .container {
-    
-}
-
-.build-new {
     width: 1050px;
-    height: 325px;
     margin: 70px auto 0;
     background: $f;
     border-radius: 3px;
     box-shadow: 0 0 1px 0px $b;
     text-align: center;
-    line-height: 325px;
+    padding: 0 20px;
+}
 
+.build-new {
+    height: 325px;
+    padding: 112px 0 0 0;
+    
     button {        
-        padding: 0;
         border-radius: 3px;
         a {
            @extend .w , .h;
@@ -195,5 +207,138 @@ nav {
         width: 190px;
         height: 50px;
         border: none;
+    }
+}
+
+
+.build-page {
+    height: auto;
+}
+
+@mixin line() {
+    border-bottom: 3px solid rgba(0,0,0,.3);
+}
+
+.edit-title {
+    height: 100px;
+    padding: 10px;
+    @include line();
+    p {
+        line-height: 80px;
+        font-weight: bold;
+        &:hover {
+            background: #fef1e8;
+        }
+    }
+}
+
+
+@mixin button() {
+    width: 100px;
+    height: 35px;
+    border: 1px solid rgba(0,0,0,.3);
+    background: #eee;
+    cursor: pointer;
+}
+
+.edit-choose {
+    padding: 20px;
+    
+    @include line();
+    .add-question {
+        border: 1px solid rgba(0,0,0,.3);
+        height: 150px;
+    }
+    
+    .add-question-type {
+        height: 70px;
+        font-size: 0;
+        padding: 20px;
+                
+        
+        button {
+            @include button();
+            margin-right: 8px;
+            &:hover span{
+                color: $m;
+            }
+
+            &:hover {
+                border: 1px solid $m;
+            }
+        } 
+
+        a {
+            display: block;
+            @extend .w , .h; 
+        }
+
+        img {
+            vertical-align: middle;
+            margin: -2px 5px 0 0;
+        }
+        span {
+            vertical-align: middle;
+            line-height: 35px;
+            color: #8b8b8b;
+            
+            @include defalutfont();
+        } 
+    }
+    
+    .add-pic {
+        height: 78px;
+        background: #eee;
+        font-size: 20px;
+        cursor: pointer;
+
+        &:hover span {
+            color: $m;
+        }
+        &:hover .add-pic-btn {
+            background: url(../img/add-q-hover.png) no-repeat
+        }
+        .add-pic-btn {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url(../img/add-q.png) no-repeat;
+            vertical-align: middle;
+        }
+
+        span {
+            vertical-align: middle;
+            line-height: 78px;
+        }
+    }
+}
+
+.other-set {
+    width: 970px;
+    height: 110px;
+    margin: auto;
+
+    .calendar-box {
+        float: left;
+        margin: 30px 0 0 70px;
+    }
+
+    .build-submit {
+        float: right;
+        margin: 30px 70px 0 0;
+        button {
+            @include button();
+            @include defalutfont();
+            font-size: 16px;
+
+            &:hover span{
+                color: $m;
+            }
+
+            &:hover {
+                border: 1px solid $m;
+            }
+
+        }
     }
 }
