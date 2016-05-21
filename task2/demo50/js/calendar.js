@@ -143,7 +143,11 @@ define(["util"] , function ($) {
                         yRange.dataset.eyear = e;
 
                         yRange.innerHTML = s+"-"+e;
-                        $self.YYYY(s , e);
+                        if(s<=NowYear && NowYear<=e) {
+                            $self.YYYY(s , e , NowYear);
+                        } else {
+                            $self.YYYY(s , e);
+                        }
                 }
             });
             

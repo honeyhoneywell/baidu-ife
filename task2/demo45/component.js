@@ -238,7 +238,6 @@ function loadingPic (pageNum = 0 , source = "500px" ) {
 
 
 function createRow () {
-
     append(calAR ())
     
     // 通过通过每张图片的横纵比来计算 

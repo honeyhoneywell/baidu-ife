@@ -31,18 +31,15 @@ a {
     color: $b;
 }
 
-@mixin defalutfont() {
-    font-family: "Consolas","微软雅黑";
-}
-
 body {
     margin: 0;
     padding: 0;
     background: $bodyC;
     font-family: "Consolas","微软雅黑";
+    min-height: 1500px;
 }
 
-ul {
+ul,ol {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -50,13 +47,37 @@ ul {
 
 button {
     padding: 0;
+    border: none;
 }
 
 p {
     margin: 0;
 }
 
+table {
+    border-collapse: collapse;
+}
+
 /* mixin */
+@mixin line() {
+    border-bottom: 3px solid rgba(0,0,0,.3);
+}
+
+@mixin t() {
+    transition: 0.4s ease;
+}
+
+@mixin defalutfont() {
+    font-family: "Consolas","微软雅黑";
+}
+
+@mixin button() {
+    width: 100px;
+    height: 35px;
+    border: 1px solid rgba(0,0,0,.3);
+    background: #eee;
+    cursor: pointer;
+}
 
 .w {
     width: 100%;
@@ -106,6 +127,11 @@ p {
 
 .none {
     display: none !important;
+}
+
+.nh {
+    padding: 0 !important;
+    height: 0 !important;
 }
 
 .clearfix {
@@ -180,6 +206,165 @@ nav {
     padding: 0 20px;
 }
 
+.questions {
+    width: 970px;
+    height: auto;
+    overflow: hidden;
+    margin: 20px auto;
+    @extend .w;
+    .questions-list {
+        @include t();
+        li {
+            @extend .w;
+            float: left;
+            padding: 5px;
+            @include t();
+            &:hover {
+                background: #fef1e8;
+            }
+
+            &:hover .ismust {
+                opacity: 1;
+            }
+
+            &:hover .operation-option-list {
+                opacity: 1;
+            }
+
+            &:hover .ac-options {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.ac-options {
+    float: right;
+    width: 45px;
+    font-size: 0;
+    margin-right: 10px;
+    opacity: 0;
+    @include t();
+    img {
+        cursor: pointer;
+        margin-right: 2px;
+    }
+}
+.block-title {
+    float:left;
+    padding-left: 5px;
+    text-align: left;
+    span {
+        float:left;
+    }
+    .q-t {
+        display: table-cell;
+        margin-left: 8px;
+        min-width: 30px;
+        cursor: pointer;
+        &:focus {
+            background: $f;
+            box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+        }
+    }
+}
+.ismust {
+    float: right;
+    opacity: 0;
+    @include t();
+    label {
+        display: block;
+        height: 100%;
+        font-size: 0;
+        cursor: pointer;
+    }
+    input {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin: 2px 5px 0 0;
+        
+    }
+    span {
+        font-size: 16px;
+        vertical-align: top;
+    }
+}
+
+.operation-option {
+    height: 34px;
+    .operation-option-list {
+        float: right;
+        opacity: 0;
+        @include t();
+        li {
+            width: 60px;
+            float: left;
+            a {
+                @extend .w , .h;
+                display: block;
+            }
+            &:hover a {
+                color: $m;
+                box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+            }
+
+            
+        }
+    }
+}
+
+.radio-block , .check-block {
+    text-align: left;
+}
+
+.radio-block label,.check-block label {
+    display: inline-block;
+    padding-left: 50px;
+}
+
+.textarea-block {
+    text-align: left;
+    padding: 20px 0 0 50px;
+    textarea {
+        width: 600px;
+        height: 130px; 
+        resize: vertical;
+        padding: 5px;
+        @include defalutfont();
+    }
+}
+
+.c-radio {
+    float: left;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 9px 5px 0 0;
+}
+
+.c-check-box {
+    @extend .c-radio;
+}
+
+.questions-title {
+    min-width:30px;
+    height: 30px;
+    float:left;
+    background: transparent;
+    text-align: left;
+    padding: 5px;
+    
+    font-size: 16px;
+    display: table-cell;
+    cursor: pointer;
+    
+    &:focus {
+        border: 1px solid rgba(0,0,0,.3);
+        background: $f;
+    }
+}
+
 .build-new {
     height: 325px;
     padding: 112px 0 0 0;
@@ -189,7 +374,7 @@ nav {
         a {
            @extend .w , .h;
            display: block;
-            text-align: center;
+           text-align: center;
            img {
                 vertical-align: middle;
                 margin: 0 5px 0 0;
@@ -215,9 +400,6 @@ nav {
     height: auto;
 }
 
-@mixin line() {
-    border-bottom: 3px solid rgba(0,0,0,.3);
-}
 
 .edit-title {
     height: 100px;
@@ -232,30 +414,20 @@ nav {
     }
 }
 
-
-@mixin button() {
-    width: 100px;
-    height: 35px;
-    border: 1px solid rgba(0,0,0,.3);
-    background: #eee;
-    cursor: pointer;
-}
-
 .edit-choose {
     padding: 20px;
     
     @include line();
     .add-question {
         border: 1px solid rgba(0,0,0,.3);
-        height: 150px;
     }
     
     .add-question-type {
         height: 70px;
         font-size: 0;
-        padding: 20px;
-                
-        
+        padding: 16px;
+        overflow: hidden;
+        @include t();
         button {
             @include button();
             margin-right: 8px;
@@ -286,7 +458,7 @@ nav {
         } 
     }
     
-    .add-pic {
+    .add-a-question {
         height: 78px;
         background: #eee;
         font-size: 20px;
@@ -295,10 +467,10 @@ nav {
         &:hover span {
             color: $m;
         }
-        &:hover .add-pic-btn {
+        &:hover .add-a-question-btn {
             background: url(../img/add-q-hover.png) no-repeat
         }
-        .add-pic-btn {
+        .add-a-question-btn {
             display: inline-block;
             width: 20px;
             height: 20px;
@@ -339,6 +511,161 @@ nav {
                 border: 1px solid $m;
             }
 
+        }
+
+        .push {
+            background: #f07600;
+            color: $f;
+            &:hover span {
+                color: $f;
+            }
+        }
+    }
+}
+
+.task-list {
+    @extend .w;
+    height: 500px;
+    table {
+        @extend .w;
+        text-align: left;
+        .task-list-thead {
+            @include line();
+            &:hover {
+                background: $f;
+            }            
+        }
+        .tr-active {
+            background: #fcf0e5;
+        }
+        tr {
+            display: inline-block;
+            height: 55px;
+            font-size: 0;
+            padding-top: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.3);
+            white-space: nowrap;
+            @include t();
+            &:hover {
+                background: #fcf0e5;
+            }
+            td {
+                display: inline-block;
+                height: 43px;
+                font-size: 16px;
+            }
+
+            .task-list-radio-block {
+                line-height: 15px;
+                width: 55px;
+                input {
+                    margin-left: 20px;
+                }
+            }
+            .task-list-title {
+                width: 375px;
+            }
+            .task-list-time {
+                width: 195px;
+            }
+
+            .task-list-stat {
+                width: 120px;
+               .release {
+                    color: #55E344;
+                }
+            }
+
+            .task-list-option {
+                width: 265px;
+                .task-list-option-new-build {
+                    background: $m;
+                    margin: 0 5px 0 0;
+                    padding: 0 5px;
+                    height: 30px;
+                    a {
+                        img {
+                            width: 16px;
+                            height: 16px;
+                            vertical-align: middle;
+                            margin-right: 5px;
+                        }
+                        span {
+                            color: $f;
+                            vertical-align: middle;
+                            line-height: 30px;
+                            @include defalutfont();
+                            font-size: 16px;
+                            font-weight: 200
+                        }
+                    }
+                }
+
+                button {
+                    height: 27px;
+                    padding: 0 5px;
+                    float: right;
+                    border-radius: 3px;
+                    margin-right: 5px;
+                    padding: 0;
+                    background: $f;
+                    border: 1px solid rgba(0,0,0,.3);
+                    a {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        font-size: 14px;
+                        line-height: 27px;
+                        padding: 0 5px;
+                        @include defalutfont();
+                    }
+                } 
+            }
+        }
+        
+        tfoot {
+            display: block;
+            padding: 5px;
+            tr {
+                display: block;
+                height: 42px;
+                border: none;
+
+                &:hover {
+                    background: $f;
+                }
+                td {
+                    height: 100%;
+                    div {
+                        display: inline-block;
+                        height: 100%;
+                        font-size: 0;
+                        input {
+                            margin: 5px 21px 0 15px;
+                            vertical-align: bottom;
+                        }
+                        span {
+                            font-size: 14px;
+                            
+                        }
+                    }
+                    button {
+                        height: 27px;
+                        width: 65px;
+                        border: 1px solid #E271A5;
+                        padding: 5px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        background: $f;
+                        @include defalutfont();
+                        @include t();
+                        &:hover {
+                            background: #E271A5;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
         }
     }
 }

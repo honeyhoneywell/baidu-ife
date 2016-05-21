@@ -26,40 +26,40 @@
             </button>
         </section>
         
-        
-        <section class="build-page">
+        <section class="build-page none">
             <div class="edit-title">
                 <p contenteditable="true">新建标题</p>
             </div>
-            <div>
-                <ul></ul>
+
+            <div class="questions">
+                <ol class="questions-list clearfix" style="height:0px"></ol>
             </div>
 
             <div class="edit-choose">
                 <div class="add-question">
-                    <div class="add-question-type">
+                    <div class="add-question-type nh">
                         <button>
-                            <a href="#">
-                                <img src="./img/radius.png" alt="radius" title="单选题">
+                            <a href="javascript:;" class="new-radio">
+                                <img src="./img/radio.png" alt="radio" title="单选题">
                                 <span>单选</span>
                             </a>
                         </button>
                         <button>
-                            <a href="#">
+                            <a href="javascript:;" class="new-check">
                                 <img src="./img/checkbox.png" alt="checkbox" title="多选题">
                                 <span>多选</span>
                             </a>
                         </button>
-                        <button>
-                            <a href="#">
+                        <button >
+                            <a href="javascript:;" class="new-textbox">
                                 <img src="./img/textbox.png" alt="textbox" title="文本题">
                                 <span>文本题</span>
                             </a>
                         </button>
                     </div>
 
-                    <div class="add-pic c-s" title="添加问题">
-                        <div class="add-pic-btn"></div>
+                    <div class="add-a-question c-s" title="添加问题">
+                        <div class="add-a-question-btn"></div>
                         <span>添加问题</span>
                     </div>
                 </div>
@@ -75,13 +75,49 @@
                 
 
                 <div class="build-submit">
-                    <button><span>保存问卷</span></button>
-                    <button><span>发布问卷  </span></button>
+                    <button class="back">
+                        <span>返回任务列</span>
+                    </button>
+                    <button class="save"><span href="javascript:;" class="save-span">保存问卷</span></button>
+                    <button class="push"><span href="javascript:;" class="push-span">发布问卷</span></button>
+                    
                 </div>
             </div>
         </section>
-
-        
+    
+        <section class="task-list">
+            <table>
+                <tbody>
+                    <tr class="task-list-thead">
+                        <td class="task-list-radio-block"></td>
+                        <td class="task-list-title">标题</td>
+                        <td class="task-list-time">操作时间</td>
+                        <td class="task-list-stat">状态</td>
+                        <td class="task-list-option">
+                            <span>操作</span>
+                            <button class="task-list-option-new-build" title="新建问卷">
+                                <a href="javascript:;">
+                                    <img src="./img/add.png" alt="add">
+                                    <span>新建问卷</span>
+                                </a>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <div>
+                                <input class="all-check" type="checkbox">
+                                <span>全选</span>    
+                            </div>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
 
     </article>
     <script data-main="js/javascript" src="./js/require.js"></script>
