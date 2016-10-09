@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+            font-family: "微软雅黑",arial;
+        }
+        table {
+
+            border-collapse: collapse;
+            border: 2px solid #000;
+            width: 850px;
+            height: 40px;
+            font-size: 18px;
+            margin: 20px auto 0;
+        }
+
+        tbody {
+
+        }
+
+        tr > th {
+            font-weight: 300;
+            background: #333333;
+            color: #fff;
+            text-align: center;
+            border: 1px solid #000;
+        }
+        
+        tr .active {
+            background: red;
+        }
+
+        tr > td {
+            border: 1px solid #000;
+            text-align:  center;
+        }
+    
+        .name {
+            width: 279px;
+        }
+
+    </style>
+</head>
+<body>
+    <table id="table"></table>
+</body>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+    (function () {
+        var oT     = $("#table");
+        function oTable (obj) {
+            this.target = obj.target || new Error("表格元素必须填写");
+            this.data   = obj.data;
+            this.property = obj.property;
+            this.sort   = obj.sort;
+            this.ColSort = obj.ColSort;
+            this.sortData(this.ColSort);
+            this.update();
+        }
+
+        oTable.prototype = {
+            update () {
+                var $self = this;
+                    $self.renderTable();
+                    $self.bindEvent();
+            },
+            renderTable () {
+                var $self         = this,
+                    propertyHtml  = "",
+                    tableBodyHtml = ""
+
+                propertyHtml += "<tbody>";
+                    +  "<tr>";
+
+                $self.property.forEach(function (value, idx) {
+                    if(idx === $self.ColSort) {
+                        propertyHtml += '<th data-index='+idx+' class="active" >' + value + "</th>";
+                    } else {
+                        propertyHtml += "<th data-index="+idx+" >" + value + "</th>";
+                    }
+                })
+
+                propertyHtml += "</tr>";
+
+                $self.data.forEach(function (value, idx) {
+                    tableBodyHtml += "<tr>";
+
+                    value.forEach(function (value, idx) {
+                        tableBodyHtml += "<td>" + value + "</td>";
+                    });
+
+                    tableBodyHtml += "</tr>";
+                });
+
+                tableBodyHtml += "</tbody>"
+
+                $self.target.innerHTML = propertyHtml + tableBodyHtml;
+            },
+            bindEvent () {
+                var $self = this,
+                    elements = Array.from($$("th", $self.target));
+                
+                var sortElements = elements.filter(function (value, idx) {
+                    if($self.sort[idx]) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+
+                sortElements.forEach(function (value, idx) {
+                    value.addEventListener("click", function () {
+                        $self.sortData(value.dataset.index);
+                        $self.ColSort = ~~value.dataset.index;
+                        $self.update();
+                    })
+                })
+            },
+            sortData (num) { // num即第几列数据
+                var $self = this,
+                    arr = [],
+                    temp = null
+
+                for( var i = 0; i<$self.data.length; i++ ) {
+                    arr.push({
+                        value: $self.data[i][num],
+                        obj: $self.data[i]
+                    });
+                }
+                
+                switch($self.sort[num]) {
+                    case 1: 
+                        for(var i = 0; i<arr.length; i++) {
+                            for(var j = i+1 ; j<arr.length; j++) {
+                                if(arr[i].value > arr[j].value) {
+                                    temp = arr[i];
+                                    arr[i] = arr[j];
+                                    arr[j] = temp; 
+                                }
+                            }
+                        }
+                        $self.sort[num] = 2;
+                    break;
+                    case 2:
+                        for(var i = 0; i<arr.length; i++) {
+                            for(var j = i+1 ; j<arr.length; j++) {
+                                if(arr[i].value < arr[j].value) {
+                                    temp = arr[i];
+                                    arr[i] = arr[j];
+                                    arr[j] = temp; 
+                                }
+                            }
+                        }
+                        $self.sort[num] = 1;
+                    break;
+                    default : throw Error("排序参数错误")  
+                }
+
+                $self.data = arr.map(function(value, idx) {
+                    return value.obj;
+                });
+            }
+        }
+
+
+        new oTable({
+            target: oT,
+            property: ["姓名","力量","敏捷","智力"],
+            data: [
+                ["德鲁伊",17,24,13],
+                ["死亡小丑",50,2,18],
+                ["冰凤凰",18,30,10],
+                ["剑神",25,9,24]
+            ],
+            sort: [0,1,1,1], // 1 顺序 2 逆序
+            ColSort: 1
+        })
+    })();
+
+    function $( v,d ) {
+        d = d || document;
+        return d.querySelector(v);
+    }
+
+    function $$( v,d ) {
+        d = d || document;
+        return d.querySelectorAll(v);
+    }
+</script>
+</html>

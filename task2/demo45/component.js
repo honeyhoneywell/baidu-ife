@@ -62,7 +62,6 @@ function Ajax (obj) {
             console.warn(" Ajax request timeout !!!");
         },
         error       : obj.error    || function ( XHR , sta , errThr ) {
-            console.log( arguments )
             throw new Error( "error " + sta + " "  + errThr );  
         },
         download : obj.download,
@@ -186,7 +185,7 @@ percentage = 20;
 
 // 需要设定一个最小 横纵比 高度为450
 // 间距8px
-//
+
 var mHeight = 450,
     minAspectRatio = oPicsWall.clientWidth / mHeight;
 
@@ -194,7 +193,7 @@ var mHeight = 450,
 function loadingPic (pageNum = 0 , source = "500px" ) {
     var Picpage = new Promise((resolve , reject) => {
         Ajax({
-            url: "http://test.facelending.com:3000/?source=" + source + "&page=" + pageNum,
+            url: "http://image.so.com/zj?ch=photography&listtype=hot&sn=" + pageNum * 30,
             method : "GET",
             success : (data) => {
                 resolve(JSON.parse(data));
@@ -203,6 +202,7 @@ function loadingPic (pageNum = 0 , source = "500px" ) {
     });
 
     Picpage.then((d) => {
+        console.log(d);
         var pics = d.map(( value , idx , array ) => {             
             return new Promise(function (resolve) {
                 var img = new Image();
